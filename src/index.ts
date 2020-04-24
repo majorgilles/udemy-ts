@@ -1,4 +1,4 @@
-import multiply, { multiplyByTwo as mBy2 } from "./multiply";
+import multiply, { multiplyByTwo as mBy2, HelloWorld } from "./multiply";
 import * as multiplyModule from "./multiply";
 const a = 2;
 const b = 500;
