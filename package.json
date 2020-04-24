@@ -6,11 +6,13 @@
   "scripts": {
     "build": "tsc",
     "build-watch": "tsc -w",
-    "exec": "node dist/index.js"
+    "exec": "node dist/index.js",
+    "exec-watch": "nodemon dist/index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^2.0.3",
     "typescript": "^3.8.3"
   }
 }
