@@ -8,7 +8,7 @@
     "build-watch": "tsc -w",
     "exec": "node dist/index.js",
     "exec-watch": "nodemon -w dist -q dist/index.js",
-    "build-exec-watch": "concurrently -n COMPILER,NODEMON -c yellow,red 'tsc -w' 'nodemon -q -w dist dist/index.js'"
+    "build-exec-watch": "concurrently -k -n COMPILER,NODEMON -c yellow,red 'tsc -w' 'nodemon -q -w dist dist/index.js'"
   },
   "author": "",
   "license": "ISC",
