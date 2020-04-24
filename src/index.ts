@@ -1,11 +1,37 @@
-import multiply, { multiplyByTwo as mBy2, HelloWorld } from "./multiply";
-import * as multiplyModule from "./multiply";
-const a = 2;
-const b = 500;
+interface A {
+  [key: string]: number | string;
+  someProp: string;
+}
 
-console.log(`${a} * ${b}`);
-console.log(multiplyModule.default(a, b));
+interface Profile {
+  readonly name: string;
+  age?: number;
+}
 
-console.log(`2 * ${a}`);
-console.log(multiplyModule.multiplyByTwo(a));
-console.log(mBy2(a));
+let profile: Profile = {
+  name: "John",
+  age: 30,
+};
+console.log(profile);
+
+const a: A = { someProp: "test" };
+a.x = 1;
+a.y = "b";
+console.log(a);
+
+interface Sum {
+  (a: number, b: number): number;
+}
+
+const sum: Sum = (a, b) => a + b;
+
+console.log(sum(1, 2));
+
+interface Parent {
+  x: string;
+}
+
+interface Child extends Parent {}
+
+let child: Child = { x: "some_prop" };
+console.log(child);
