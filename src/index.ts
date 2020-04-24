@@ -5,4 +5,5 @@ function multipliy(a: number, b: number): number {
 const a = 2;
 const b = 2;
 
+console.log(`${a} * ${b}`)
 console.log(multipliy(a, b));
