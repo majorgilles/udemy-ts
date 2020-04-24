@@ -7,7 +7,7 @@
     "build": "tsc",
     "build-watch": "tsc -w",
     "exec": "node dist/index.js",
-    "exec-watch": "nodemon dist/index.js"
+    "exec-watch": "nodemon -w dist dist/index.js"
   },
   "author": "",
   "license": "ISC",
