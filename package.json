@@ -7,11 +7,13 @@
     "build": "tsc",
     "build-watch": "tsc -w",
     "exec": "node dist/index.js",
-    "exec-watch": "nodemon -w dist dist/index.js"
+    "exec-watch": "nodemon -w dist -q dist/index.js",
+    "build-exec-watch": "concurrently 'tsc -w' 'nodemon -w dist dist/index.js'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "nodemon": "^2.0.3",
     "typescript": "^3.8.3"
   }
