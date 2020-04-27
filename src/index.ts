@@ -1,37 +1,33 @@
-interface A {
-  [key: string]: number | string;
-  someProp: string;
+function sum(a: number = 0, b?: number): number {
+  return a + (b || 0);
 }
 
-interface Profile {
-  readonly name: string;
-  age?: number;
+type MyFunc = (a: number, b: number) => number;
+
+const sum2: MyFunc = (a, b) => a + b;
+console.log(sum2(1, 2));
+console.log(sum());
+console.log(sum(1));
+console.log(sum(1, 5));
+
+// varargs
+function sumEverything(...numbers: number[]): number {
+  return numbers.reduce((acc, elem) => acc + elem, 0);
 }
 
-let profile: Profile = {
-  name: "John",
-  age: 30,
-};
-console.log(profile);
+console.log(sumEverything(1, 2, 3, 4));
 
-const a: A = { someProp: "test" };
-a.x = 1;
-a.y = "b";
-console.log(a);
+// overlads
+function calcArea(width: number, height: number): number;
+function calcArea(length: number): number;
 
-interface Sum {
-  (a: number, b: number): number;
+function calcArea(...args: number[]): number {
+  if (args.length === 2) {
+    return args[0] * args[1];
+  } else {
+    return args[0] ** 2;
+  }
 }
 
-const sum: Sum = (a, b) => a + b;
-
-console.log(sum(1, 2));
-
-interface Parent {
-  x: string;
-}
-
-interface Child extends Parent {}
-
-let child: Child = { x: "some_prop" };
-console.log(child);
+console.log(calcArea(2, 2));
+console.log(calcArea(6));
