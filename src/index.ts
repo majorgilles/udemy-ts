@@ -1,33 +1,19 @@
-function sum(a: number = 0, b?: number): number {
-  return a + (b || 0);
-}
+class Robot {
+  name: string;
 
-type MyFunc = (a: number, b: number) => number;
+  constructor(name: string) {
+    this.name = name;
+  }
 
-const sum2: MyFunc = (a, b) => a + b;
-console.log(sum2(1, 2));
-console.log(sum());
-console.log(sum(1));
-console.log(sum(1, 5));
+  askName() {
+    console.log(`My name is ${this.name}`);
+  }
 
-// varargs
-function sumEverything(...numbers: number[]): number {
-  return numbers.reduce((acc, elem) => acc + elem, 0);
-}
-
-console.log(sumEverything(1, 2, 3, 4));
-
-// overlads
-function calcArea(width: number, height: number): number;
-function calcArea(length: number): number;
-
-function calcArea(...args: number[]): number {
-  if (args.length === 2) {
-    return args[0] * args[1];
-  } else {
-    return args[0] ** 2;
+  move(distance: number) {
+    console.log(`${this.name} moved ${distance} meters`);
   }
 }
 
-console.log(calcArea(2, 2));
-console.log(calcArea(6));
+const robot = new Robot("John");
+robot.askName();
+robot.move(21);
