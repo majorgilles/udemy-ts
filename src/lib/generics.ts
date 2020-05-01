@@ -13,3 +13,11 @@ interface GenericInterface<T> {
   <U>(a: U): U;
   someProp: T;
 }
+
+class GenericClass<P> {
+  constructor(public props: P) {}
+
+  getProps(): P {
+    return this.props;
+  }
+}
