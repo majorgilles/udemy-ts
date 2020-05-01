@@ -18,11 +18,15 @@ interface Cat {
   walk(): void;
 }
 
+function isDog(someObj: Dog | Cat): someObj is Dog {
+  return (<Dog>someObj).bark !== undefined;
+}
+
 function callMyPet(pet: Dog | Cat) {
   pet.walk();
-  if ((<Dog>pet).bark) {
-    (<Dog>pet).bark();
+  if (isDog(pet)) {
+    pet.bark();
   } else {
-    (<Cat>pet).meow();
+    pet.meow();
   }
 }
