@@ -37,3 +37,6 @@ const getExpiredItems = <Item extends Expirable>(items: Array<Item>) => {
   const currentDate = new Date().getTime();
   return items.filter((item) => item.expiryDate.getDate() < currentDate);
 };
+
+const exp1 = getExpiredItems(chocoCakes);
+const exp2 = getExpiredItems(vanillaCakes);
