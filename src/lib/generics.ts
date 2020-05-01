@@ -33,7 +33,13 @@ const chocoCakes: ChocolateCake[] = [{ expiryDate: new Date() }];
 
 const vanillaCakes: VanillaCake[] = [{ expiryDate: new Date() }];
 
-const getExpiredItems = <Item extends Expirable>(items: Array<Item>) => {
+interface GetExpiredItemsFunction {
+  <Item extends Expirable>(items: Array<Item>): Array<Item>;
+}
+
+const getExpiredItems: GetExpiredItemsFunction = <Item extends Expirable>(
+  items: Array<Item>
+) => {
   const currentDate = new Date().getTime();
   return items.filter((item) => item.expiryDate.getDate() < currentDate);
 };
