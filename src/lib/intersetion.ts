@@ -14,13 +14,13 @@ function X(obj: IA & IB & IC) {
   return obj.a + obj.b + obj.c;
 }
 
-function combine<A, B>(objA: A, objB: B) {
+function combine<A, B>(objA: A, objB: B) A & B {
   return {
     ...objA,
     ...objB,
   };
 }
 
-const objA = { a: 1 };
-const objB = { b: 2 };
-const resultObj = combine(objA, objB);
+const objA = {a:1};
+const objB = {b: 2};
+const resultObj = combine(objA, objB)
