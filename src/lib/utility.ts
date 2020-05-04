@@ -55,3 +55,60 @@ let janesDrink: Exclude<AvailableDrinks, DrinksJaneDoesntLike> = "Lemonade"; // 
 type DrinksJanesLikes = "Tea" | "Lemonade" | "Mojito";
 //let otherDrinks: Extract<AvailableDrinks, DrinksJanesLikes> = "Mojito"; // doesn't work as it's not in the available drinks
 let otherDrinks_2: Extract<AvailableDrinks, DrinksJanesLikes> = "Tea";
+
+// NonNullable<T> -> will remove null and undefined
+interface StarshipProperties {
+  color?: "blue" | "red" | "green";
+}
+
+function paintStarShip(
+  id: number,
+  color: NonNullable<StarshipProperties["color"]>
+) {
+  return {
+    id,
+    color,
+  };
+}
+// paintStarShip(1, undefined); strictNullCheck activated + NonNullable -> produces an error as expected
+
+// ReturnType<T> -> get return type of function
+type PaintStarShipReturn = ReturnType<typeof paintStarShip>;
+
+// InstanceType<T>
+// type Constructible<ClassInstance> = new (...args: any[]) => ClassInstance;
+// function Deletable<BaseClass extends Constructible<{}>>(Base: BaseClass) {
+//   return class extends Base {
+//     deleted: boolean;
+//     delete() {}
+//   };
+// }
+
+// class Car {
+//   name: string;
+//   constructor(name: string) {
+//     this.name = name;
+//   }
+// }
+// type CarInstanceType = InstanceType<typeof Car>; // not very useful, because you should use Car directly
+
+// class User {
+//   constructor(name: string) {}
+// }
+
+// const DeletableCarVar = Deletable(Car);
+// type DeletableCar = InstanceType<typeof DeletableCarVar>;
+// const DeletableUserVar = Deletable(User);
+// type DeletableUser = InstanceType<typeof DeletableUserVar>;
+
+// class Profile {
+//   car?: DeletableCar;
+//   user?: DeletableUser;
+
+//   constructor(car?: DeletableCar, user?: DeletableUser) {
+//     this.car = car;
+//     this.user = user;
+//   }
+// }
+
+// const prof = new Profile();
